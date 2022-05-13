@@ -49,7 +49,10 @@ def edit_text(bot_msg, text):
     if not r.exists(key):
         time.sleep(random.random())
         r.set(key, "ok", ex=3)
-        bot_msg.edit_text(text)
+        try:
+            bot_msg.edit_text(text)
+        except Exception as ex:
+            print(ex)
 
 
 def tqdm_progress(desc, total, finished, speed="", eta=""):
